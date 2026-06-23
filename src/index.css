@@ -1,0 +1,186 @@
+@import "tailwindcss";
+
+/* --- Premium Animation System --- */
+
+/* Keyframe declarations */
+@keyframes premiumFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes premiumFadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes premiumFadeSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes premiumScaleUp {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(0, 185, 241, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(0, 185, 241, 0.6);
+  }
+}
+
+@keyframes floatCard {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes shimmerGlow {
+  0%, 100% {
+    text-shadow: 0 0 4px rgba(0, 112, 186, 0.1);
+  }
+  50% {
+    text-shadow: 0 0 12px rgba(0, 185, 241, 0.4);
+  }
+}
+
+/* Global entry animations */
+.auth-card,
+.send-money-card,
+.rewards-card,
+.transactions-container,
+.my-profile {
+  animation: premiumScaleUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.dashboard-main {
+  animation: premiumFadeIn 0.5s ease both;
+}
+
+/* Staggered entry for list items and grids */
+.action-card {
+  animation: premiumFadeSlideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.action-card:nth-child(1) { animation-delay: 0.05s; }
+.action-card:nth-child(2) { animation-delay: 0.1s; }
+.action-card:nth-child(3) { animation-delay: 0.15s; }
+.action-card:nth-child(4) { animation-delay: 0.2s; }
+
+.stat-card {
+  animation: premiumFadeSlideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.stat-card:nth-child(1) { animation-delay: 0.1s; }
+.stat-card:nth-child(2) { animation-delay: 0.15s; }
+.stat-card:nth-child(3) { animation-delay: 0.2s; }
+.stat-card:nth-child(4) { animation-delay: 0.25s; }
+
+.summary-card {
+  animation: premiumFadeSlideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.summary-card:nth-child(1) { animation-delay: 0.05s; }
+.summary-card:nth-child(2) { animation-delay: 0.1s; }
+.summary-card:nth-child(3) { animation-delay: 0.15s; }
+.summary-card:nth-child(4) { animation-delay: 0.2s; }
+
+.product-card {
+  animation: premiumFadeSlideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.product-card:nth-child(1n) { animation-delay: 0.05s; }
+.product-card:nth-child(2n) { animation-delay: 0.1s; }
+.product-card:nth-child(3n) { animation-delay: 0.15s; }
+
+.transaction-item,
+.transactions-table tbody tr {
+  animation: premiumFadeSlideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Hover effect class overrides for enhanced feel */
+.action-card,
+.stat-card,
+.summary-card,
+.product-card,
+.user-card {
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease, border-color 0.4s ease !important;
+}
+
+.action-card:hover,
+.stat-card:hover,
+.summary-card:hover,
+.product-card:hover {
+  transform: translateY(-8px) scale(1.025) !important;
+  box-shadow: 0 20px 30px rgba(0, 112, 186, 0.08), 0 0 15px rgba(0, 185, 241, 0.15) !important;
+  border-color: rgba(0, 185, 241, 0.4) !important;
+}
+
+/* Micro-animations on interactive items */
+.nav-item {
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+}
+.nav-item:hover {
+  transform: translateX(6px) !important;
+}
+
+.btn,
+.submit-btn,
+.btn-primary,
+.btn-secondary {
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+}
+
+.btn:hover,
+.submit-btn:hover {
+  transform: translateY(-3px) scale(1.02) !important;
+  box-shadow: 0 10px 20px rgba(0, 48, 135, 0.15) !important;
+}
+
+.btn:active,
+.submit-btn:active {
+  transform: translateY(-1px) scale(0.99) !important;
+}
+
+/* Shimmer effects for balance numbers */
+.balance-amount,
+.stat-value,
+.points-value {
+  animation: shimmerGlow 4s ease-in-out infinite;
+}
+
+/* Slide in animation for notification center */
+.notifications-panel {
+  animation: slideInRight 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Modal and popups pop scale-up */
+.error-popup,
+.redeem-popup,
+.reward-popup {
+  animation: premiumScaleUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
