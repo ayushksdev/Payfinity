@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { API_BASE_URL } from '../config';
 import '../stylesheets/header.scss';
 
 
@@ -31,7 +32,7 @@ const Header = ({
       const tokenPayload = JSON.parse(atob(token.split('.')[1]));
       const userId = tokenPayload.userId;
 
-      const response = await fetch(`http://localhost:8080/api/users/${userId}`, {
+      const response = await fetch(`${API_BASE_URL}/api/users/${userId}`, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'
@@ -55,7 +56,7 @@ const Header = ({
       const tokenPayload = JSON.parse(atob(token.split('.')[1]));
       const userId = tokenPayload.userId;
 
-      const response = await fetch(`http://localhost:8080/api/notify/${userId}`, {
+      const response = await fetch(`${API_BASE_URL}/api/notify/${userId}`, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'
@@ -84,7 +85,7 @@ const Header = ({
       const tokenPayload = JSON.parse(atob(token.split('.')[1]));
       const userId = tokenPayload.userId;
 
-      const response = await fetch(`http://localhost:8080/api/notify/user/${userId}`, {
+      const response = await fetch(`${API_BASE_URL}/api/notify/user/${userId}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`

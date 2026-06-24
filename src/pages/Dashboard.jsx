@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { API_BASE_URL } from '../config';
 import '../stylesheets/dashboard.scss';
 import { useNavigate } from "react-router-dom";
 
@@ -48,7 +49,7 @@ const Dashboard = () => {
       }
 
       // Fetch user data
-      const userRes = await fetch(`http://localhost:8080/api/users/${userId}`, {
+      const userRes = await fetch(`${API_BASE_URL}/api/users/${userId}`, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'
@@ -62,7 +63,7 @@ const Dashboard = () => {
       setUser(userData);
 
       // Fetch wallet balance
-      const walletRes = await fetch(`http://localhost:8080/api/v1/wallets/${userId}`, {
+      const walletRes = await fetch(`${API_BASE_URL}/api/v1/wallets/${userId}`, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'
@@ -76,7 +77,7 @@ const Dashboard = () => {
       }
 
       // Fetch recent transactions
-      const transactionsRes = await fetch(`http://localhost:8080/api/transactions/user/${userId}`, {
+      const transactionsRes = await fetch(`${API_BASE_URL}/api/transactions/user/${userId}`, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'
@@ -94,7 +95,7 @@ const Dashboard = () => {
       // Fetch notifications from correct port (8084)
       let userNotifications = [];
       try {
-        const notificationsRes = await fetch(`http://localhost:8080/api/notify/${userId}`, {
+        const notificationsRes = await fetch(`${API_BASE_URL}/api/notify/${userId}`, {
           headers: {
             'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json'
@@ -114,7 +115,7 @@ const Dashboard = () => {
       // Fetch rewards from correct port (8083)
       let rewardsCount = 0;
       try {
-        const rewardsRes = await fetch(`http://localhost:8080/api/rewards/user/${userId}`, {
+        const rewardsRes = await fetch(`${API_BASE_URL}/api/rewards/user/${userId}`, {
           headers: {
             'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json'
@@ -154,7 +155,7 @@ const Dashboard = () => {
       const tokenPayload = JSON.parse(atob(token.split('.')[1]));
       const userId = tokenPayload.userId;
 
-      const response = await fetch(`http://localhost:8080/api/notify/${userId}`, {
+      const response = await fetch(`${API_BASE_URL}/api/notify/${userId}`, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'
@@ -273,7 +274,7 @@ const Dashboard = () => {
       const tokenPayload = JSON.parse(atob(token.split('.')[1]));
       const userId = tokenPayload.userId;
 
-      const response = await fetch(`http://localhost:8080/api/notify/user/${userId}`, {
+      const response = await fetch(`${API_BASE_URL}/api/notify/user/${userId}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`

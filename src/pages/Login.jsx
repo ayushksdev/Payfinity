@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext"; 
+import { API_BASE_URL } from "../config";
 import "../stylesheets/signup.scss";
 
 function LoginPage() {
@@ -15,7 +16,7 @@ function LoginPage() {
     const payload = { email, password };
   
     try {
-      const response = await fetch("http://localhost:8080/auth/login", {
+      const response = await fetch(`${API_BASE_URL}/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
