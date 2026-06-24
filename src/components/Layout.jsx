@@ -1,6 +1,6 @@
 // components/Layout.js
 import React from 'react';
-import Header from './header.jsx';
+import Header from './Header.jsx';
 // import '../stylesheets/layout.scss'
 
 const Layout = ({ 
