@@ -172,7 +172,7 @@ const Dashboard = () => {
           
           // Show browser notification
           if ('Notification' in window && Notification.permission === 'granted') {
-            new Notification('PayFlow - New Notification', {
+            new Notification('Payfinity - New Notification', {
               body: latestNotification.message,
               icon: '/logo.png',
               badge: '/logo.png'
@@ -365,10 +365,10 @@ const Dashboard = () => {
           <h2>
             <img 
               src="/assets/logo.png" 
-              alt="PayFlow Logo" 
+              alt="Payfinity Logo" 
               className="brand-logo" 
             />
-            PayFlow
+            Payfinity
           </h2>
         </div>
 

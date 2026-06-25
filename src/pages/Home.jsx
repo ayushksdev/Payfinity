@@ -26,8 +26,8 @@ const HomePage = () => {
       <nav className="home-nav">
         <div className="nav-brand">
           <div className="logo">
-            <span className="logo-icon">💸</span>
-            <span className="logo-text">PayFlow</span>
+            <img src="/assets/logo.png" alt="Payfinity Logo" style={{ width: '32px', height: '32px', objectFit: 'contain' }} />
+            <span className="logo-text">Payfinity</span>
           </div>
         </div>
         <div className="nav-actions">
@@ -46,12 +46,12 @@ const HomePage = () => {
           
           <h1 className="hero-title">
             Welcome to
-            <span className="gradient-text"> PayFlow</span>
+            <span className="gradient-text"> Payfinity</span>
           </h1>
           
           <p className="hero-subtitle">
             Experience seamless, secure, and instant payments. 
-            Join millions who trust PayFlow for their everyday transactions.
+            Join millions who trust Payfinity for their everyday transactions.
           </p>
 
           <div className="hero-stats">
@@ -128,7 +128,7 @@ const HomePage = () => {
       <section id="features" className="features-section">
         <div className="container">
           <div className="section-header">
-            <h2>Why Choose PayFlow?</h2>
+            <h2>Why Choose Payfinity?</h2>
             <p>Built for speed, security, and simplicity</p>
           </div>
 
@@ -177,7 +177,7 @@ const HomePage = () => {
         <div className="container">
           <div className="cta-content">
             <h2>Ready to Get Started?</h2>
-            <p>Join PayFlow today and experience the future of digital payments.</p>
+            <p>Join Payfinity today and experience the future of digital payments.</p>
             <button className="btn btn-large" onClick={handleGetStarted}>
               Create Your Free Account
             </button>
@@ -191,8 +191,8 @@ const HomePage = () => {
           <div className="footer-content">
             <div className="footer-brand">
               <div className="logo">
-                <span className="logo-icon">💸</span>
-                <span className="logo-text">PayFlow</span>
+                <img src="/assets/logo.png" alt="Payfinity Logo" style={{ width: '32px', height: '32px', objectFit: 'contain' }} />
+                <span className="logo-text">Payfinity</span>
               </div>
               <p>Making payments simple, secure, and seamless.</p>
             </div>
@@ -204,7 +204,7 @@ const HomePage = () => {
             </div>
           </div>
           <div className="footer-bottom">
-            <p>&copy; 2024 PayFlow. All rights reserved.</p>
+            <p>&copy; 2024 Payfinity. All rights reserved.</p>
           </div>
         </div>
       </footer>

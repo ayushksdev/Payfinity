@@ -4,7 +4,7 @@ import '../stylesheets/header.scss';
 
 
 const Header = ({ 
-  title = "PayFlow", 
+  title = "Payfinity", 
   subtitle, 
   showUser = true, 
   showNotifications = true,

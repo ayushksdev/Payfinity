@@ -23,10 +23,18 @@ function SignupPage() {
         body: JSON.stringify(payload),
       });
 
-      const data = await response.json();
+      let data = {};
+      let errorMessage = "";
+      const contentType = response.headers.get("content-type");
+      if (contentType && contentType.includes("application/json")) {
+        data = await response.json();
+        errorMessage = data.message;
+      } else {
+        errorMessage = await response.text();
+      }
 
       if (!response.ok) {
-        toast.error(`Signup failed: ${data.message || "Unknown error"}`);
+        toast.error(errorMessage || "Signup failed. Please try again.");
         return;
       }
 
@@ -50,7 +58,7 @@ function SignupPage() {
 
     } catch (err) {
       console.error("Network error:", err);
-      toast.error("Network error: " + err.message);
+      toast.error("Unable to connect to server. Please try again later.");
     }
   };
 

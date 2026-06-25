@@ -22,16 +22,24 @@ function LoginPage() {
         body: JSON.stringify(payload),
       });
   
-      const data = await response.json();
+      let data = {};
+      let errorMessage = "";
+      const contentType = response.headers.get("content-type");
+      if (contentType && contentType.includes("application/json")) {
+        data = await response.json();
+        errorMessage = data.message;
+      } else {
+        errorMessage = await response.text();
+      }
   
       if (!response.ok) {
-        toast.error("Login failed: " + (data.message || "Unknown error"));
+        toast.error(errorMessage || "Login failed. Please check your credentials.");
         return;
       }
   
       localStorage.setItem("token", data.token);
       
-      // ADD THESE LINES - Store user data if available
+      // Store user data if available
       if (data.user) {
         localStorage.setItem("userData", JSON.stringify(data.user));
         login(data.user, data.token); // Update auth context
@@ -49,7 +57,7 @@ function LoginPage() {
   
     } catch (err) {
       console.error("Network error:", err);
-      toast.error("Network error: " + err.message);
+      toast.error("Unable to connect to server. Please try again later.");
     }
   };
 
