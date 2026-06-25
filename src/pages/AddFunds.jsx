@@ -68,6 +68,13 @@ const AddFunds = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const amountFloat = parseFloat(formData.amount);
+
+    if (amountFloat > 10000) {
+      showError('Limit Exceeded', 'The maximum amount you can add at once is ₹10,000.');
+      return;
+    }
+
     setLoading(true);
     setMessage('');
 
@@ -79,7 +86,7 @@ const AddFunds = () => {
       const payload = {
         userId: parseInt(userId),
         currency: "INR",
-        amount: parseFloat(formData.amount)
+        amount: amountFloat
       };
 
       const response = await fetch(`${API_BASE_URL}/api/v1/wallets/credit`, {
@@ -100,6 +107,23 @@ const AddFunds = () => {
         
         setWalletBalance(data.balance);
         showSuccess();
+
+        // Create notification for adding funds directly via REST API since Kafka might be down
+        try {
+          await fetch(`${API_BASE_URL}/api/notify`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify({
+              userId: parseInt(userId),
+              message: `💰 ₹${payload.amount} added to your wallet successfully.`
+            })
+          });
+        } catch (notifyErr) {
+          console.warn('Failed to send add-funds notification:', notifyErr);
+        }
       } else {
         showError('Add Funds Failed', data.message || 'Failed to add funds');
       }
@@ -186,6 +210,7 @@ const AddFunds = () => {
               className="form-input"
               placeholder="0.00"
               min="1"
+              max="10000"
               step="1"
               required
             />
